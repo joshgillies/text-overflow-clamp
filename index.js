@@ -6,6 +6,10 @@
   * But be careful with webfonts!
   */
 
+// nieve window and document polyfill
+var window = {};
+var document = require('global/document');
+
 // bind function support for older browsers without it
 // https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Function/bind
 if (!Function.prototype.bind) {
@@ -120,3 +124,6 @@ if (!Function.prototype.bind) {
 	}
 	w.clamp = clamp;
 })(window, document);
+
+// export npm ready clamp function
+module.exports = window.clamp;

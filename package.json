@@ -1,0 +1,29 @@
+{
+  "name": "text-overflow-clamp",
+  "version": "1.0.0",
+  "description": "A bare-bones port of Vesa Piittinen's TextOverflowClamp.js (http://codepen.io/Merri/pen/Dsuim)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshgillies/text-overflow-clamp.git"
+  },
+  "keywords": [
+    "clamp",
+    "ellipsis",
+    "overflow",
+    "multiline",
+    "browser"
+  ],
+  "author": "Vesa Piittinen (http://merri.net/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshgillies/text-overflow-clamp/issues"
+  },
+  "homepage": "https://github.com/joshgillies/text-overflow-clamp#readme",
+  "dependencies": {
+    "global": "^4.3.1"
+  }
+}
