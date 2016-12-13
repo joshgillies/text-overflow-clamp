@@ -6,8 +6,7 @@
   * But be careful with webfonts!
   */
 
-// nieve window and document polyfill
-var window = {};
+// nieve document polyfill
 var document = require('global/document');
 
 // bind function support for older browsers without it
@@ -37,8 +36,8 @@ if (!Function.prototype.bind) {
 }
 
 // the actual meat is here
-(function(w, d){
-	var clamp, measure, text, lineWidth,
+module.exports = (function(d){
+	var measure, text, lineWidth,
 		lineStart, lineCount, wordStart,
 		line, lineText, wasNewLine,
     ce = d.createElement.bind(d),
@@ -53,7 +52,7 @@ if (!Function.prototype.bind) {
 		s.visibility = 'hidden'; // prevent drawing
 	})(measure.style);
 	
-	clamp = function (el, lineClamp) {
+	return function clamp (el, lineClamp) {
     // make sure the element belongs to the document
     if(!el.ownerDocument || !el.ownerDocument === d) return;
 		// reset to safe starting values
@@ -111,7 +110,7 @@ if (!Function.prototype.bind) {
 		line = ce('span');
 		// give styles required for text-overflow to kick in
 		(function(s){
-			s.display = 'inline-block';
+			s.display = 'block';
 			s.overflow = 'hidden';
 			s.textOverflow = 'ellipsis';
 			s.whiteSpace = 'nowrap';
@@ -121,9 +120,5 @@ if (!Function.prototype.bind) {
 		line.appendChild(ctn(text.substr(lineStart)));
 		// add the line element to the container
 		el.appendChild(line);
-	}
-	w.clamp = clamp;
-})(window, document);
-
-// export npm ready clamp function
-module.exports = window.clamp;
+	};
+})(document);
